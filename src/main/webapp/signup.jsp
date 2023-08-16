@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@page isELIgnored="false"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin Login Page</title>
+<title>User Register</title>
 <%@include file="component/allcss.jsp"%>
 <style type="text/css">
 .paint-card {
@@ -14,36 +17,43 @@
 </head>
 <body>
 	<%@include file="component/navber.jsp"%>
-	
-	
+
+
 	<div class="container p-5">
 
 		<div class="row">
 			<div class="col-md-4 offset-md-4">
 				<div class="card paint-card">
 					<div class="card-body">
-						<p class="text-center text-success fs-3">Admin Login</p>
-
-						<c:if test="${not empty succMsg }">
-							<p class="text-center text-success fs-3">${succMsg}</p>
-							<c:remove var="succMsg" scope="session" />
+						<p class="text-center text-success fs-3">User Register</p>
+						
+						<c:if test="${not empty successMsg }">
+							<p class="text-center text-success fs-3">${successMsg}</p>
+							<c:remove var="sucMsg" scope="session" />
 						</c:if>
 
 						<c:if test="${not empty errorMsg }">
-							<p class="text-center text-danger fs-5">${errorMsg}</p>
+							<p class="text-center text-danger fs-3">${errorMsg}</p>
 							<c:remove var="errorMsg" scope="session" />
 						</c:if>
+						
+						<form action="user_register" method="post">
+							<div class="mb-3">
+								<label class="form-label">Full Name</label> <input required
+									name="fullname" type="text" class="form-control">
+							</div>
 
-						<form action="adminLogin" method="post">
 							<div class="mb-3">
 								<label class="form-label">Email address</label> <input required
 									name="email" type="email" class="form-control">
 							</div>
+
 							<div class="mb-3">
 								<label class="form-label">Password</label> <input required
 									name="password" type="password" class="form-control">
 							</div>
-							<button type="submit" class="btn bg-success text-white col-md-12">Login</button>
+
+							<button type="submit" class="btn bg-success text-white col-md-12">Register</button>
 						</form>
 
 					</div>
@@ -52,7 +62,7 @@
 		</div>
 
 	</div>
-	
+
 
 </body>
 </html>
