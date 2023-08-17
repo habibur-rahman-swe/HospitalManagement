@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@page isELIgnored="false"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,9 +27,9 @@
 					<div class="card-body">
 						<p class="text-center text-success fs-3">Admin Login</p>
 
-						<c:if test="${not empty succMsg }">
-							<p class="text-center text-success fs-3">${succMsg}</p>
-							<c:remove var="succMsg" scope="session" />
+						<c:if test="${not empty successMsg }">
+							<p class="text-center text-success fs-5">${successMsg}</p>
+							<c:remove var="sucMsg" scope="session" />
 						</c:if>
 
 						<c:if test="${not empty errorMsg }">

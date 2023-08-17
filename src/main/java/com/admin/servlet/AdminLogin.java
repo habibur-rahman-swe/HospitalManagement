@@ -29,6 +29,10 @@ public class AdminLogin extends HttpServlet{
 				session.setAttribute("adminObj", new User());
 				
 				resp.sendRedirect("admin/index.jsp");
+			} else {
+				session.setAttribute("errorMsg", "Invelid username and password!");
+				
+				resp.sendRedirect("admin_login.jsp");
 			}
 			
 		} catch (Exception e) {

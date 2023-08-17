@@ -2,6 +2,7 @@ package com.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import com.entity.User;
 
@@ -35,6 +36,32 @@ public class UserDao {
 		}
 		
 		return flag;
+	}
+	
+	public User login(String email, String password) {
+		User user = null;
+		
+		try {
+			String sql = "SELECT * FROM user WHERE email = ? AND password = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			ps.setString(2, password);
+			
+			ResultSet res = ps.executeQuery();
+			
+			while (res.next()) {
+				user = new User();
+				user.setId(res.getInt(1));
+				user.setFullName(res.getString(2));
+				user.setEmail(res.getString(3));
+				user.setPassword(res.getString(4));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return user;
 	}
 	
 }
