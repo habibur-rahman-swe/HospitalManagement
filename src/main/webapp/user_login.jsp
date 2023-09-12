@@ -1,19 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@page isELIgnored="false"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@include file="component/allcss.jsp"%>
-</head>
-<body>
-	<%@include file="component/navber.jsp"%>
-	<style type="text/css">
+<%@include file="component/navber.jsp"%>
+
+<style type="text/css">
 .paint-card {
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 </style>
+
+</head>
+<body>
 
 	<div class="container p-5">
 
@@ -24,7 +29,7 @@
 						<p class="text-center text-success fs-3">User Login</p>
 
 						<c:if test="${not empty succMsg }">
-							<p class="text-center text-success fs-3">${succMsg}</p>
+							<p class="text-center text-success fs-5">${succMsg}</p>
 							<c:remove var="succMsg" scope="session" />
 						</c:if>
 
@@ -33,20 +38,24 @@
 							<c:remove var="errorMsg" scope="session" />
 						</c:if>
 
-						<form action="doctorLogin" method="post">
+						<form action="userLogin" method="post">
 							<div class="mb-3">
 								<label class="form-label">Email address</label> <input required
 									name="email" type="email" class="form-control">
 							</div>
+
 							<div class="mb-3">
 								<label class="form-label">Password</label> <input required
 									name="password" type="password" class="form-control">
 							</div>
+
 							<button type="submit" class="btn bg-success text-white col-md-12">Login</button>
 						</form>
-						
-						<br>Don't have an account?<a href="signup.jsp" class="text-decoration-none">Create One</a>
-						
+
+
+						<br>Don't have an account?<a href="signup.jsp"
+							class="text-decoration-none">Create One</a>
+
 					</div>
 				</div>
 			</div>
